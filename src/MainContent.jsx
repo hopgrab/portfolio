@@ -189,7 +189,7 @@ function Skills() {
   const Icon = skill.icon;
 
   return (
-    <div className="min-w-[70%] h-[30%] rounded-xl bg-[#061E29] p-10">
+    <div className="w-[100%] h-[30%] rounded-xl bg-[#061E29] p-10">
         <style>
             {`
             @keyframes flip-in {

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Code2, Server, Database, BrainCircuit, Boxes, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 
 const SERVICES = [
@@ -33,7 +33,18 @@ color: "#F27C6E",
 items: ["Blender", ],
 },
 ];
-const CARDS_VISIBLE = 5;
+
+
+function useCardsVisible() {
+  const get = () => (window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 3 : 5);
+  const [n, setN] = useState(get);
+  useEffect(() => {
+    const onResize = () => setN(get());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return n;
+}
 
 function ServiceCard({ service, active}) {
 const Icon = service.icon;
@@ -72,6 +83,7 @@ return (
 }
 
 function CardCarousel() {
+const CARDS_VISIBLE = useCardsVisible();
 const [services, setServices] = useState(SERVICES);
 const len = services.length;
 const extended = [
@@ -106,7 +118,7 @@ if (index < CARDS_VISIBLE) {
 
 
 return (
-<div className="mx-auto w-full max-w-6xl">
+<div className="mx-auto w-full max-w-7xl">
     <div className="relative flex items-center">
     <button
         onClick={() => goTo(index - 1)}
@@ -168,7 +180,7 @@ return (
 
 export default function Services() {
 return (
-<div className="bg-[#061E29] h-full px-6 py-16 rounded-xl">
+<div className="w-full h-full min-w-0 overflow-hidden rounded-xl bg-[#061E29] px-6 py-16">
     <div className="flex max-w-[70%] origin-center items-center gap-5">
     <Code2 className="text-5xl text-white" />
     <h1 className="text-5xl text-white">Services I can provide.</h1>
