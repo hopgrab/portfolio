@@ -12,7 +12,8 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import GlitchText from "./backgrounds/GlitchText";
-const emailAPI = import.meta.env.EMAIL_API_KEY
+
+const emailAPI = import.meta.env.VITE_EMAIL_API_KEY
 
 const line1 = "Hi my name is";
 const line2 = "JOSEPH";
