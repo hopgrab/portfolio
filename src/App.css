@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+    --animate-flip: flip 2.5s ease-out;
+
+    @keyframes flip {
+        0% {
+        opacity: 0;
+        transform: rotateX(-90deg) translateY(20px);
+        }
+
+        50% {
+        opacity: 0.5;
+        }
+
+        100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0);
+        }
+    }
+}
