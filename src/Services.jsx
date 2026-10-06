@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Code2, Server, Database, BrainCircuit, Boxes, ChevronLeft, ChevronRight, Plus } from "lucide-react";
-
+import useIsMobile from "./Mobile";
 const SERVICES = [
 {
 name: "Front-end",
@@ -179,15 +179,18 @@ return (
 }
 
 export default function Services() {
-return (
-<div className="w-full h-full min-w-0 overflow-hidden rounded-xl bg-[#061E29] px-6 py-16">
-    <div className="flex max-w-[70%] origin-center items-center gap-5">
-    <Code2 className="text-5xl text-white" />
-    <h1 className="text-5xl text-white">Services I can provide.</h1>
+    const isMobile = useIsMobile()
+    return (
+    <div className={ isMobile ? "w-full min-w-0 overflow-hidden rounded-xl bg-[#061E29] px-6 py-8" :
+        "w-full h-full min-w-0 overflow-hidden rounded-xl bg-[#061E29] px-6 py-16"}>
+        <div className={ isMobile ? "flex max-w-full items-center gap-3" :
+            "flex max-w-[70%] origin-center items-center gap-5"}>
+        <Code2 className="text-5xl text-white" />
+        <h1 className="text-5xl text-white">Services I can provide.</h1>
+        </div>
+        <div className="mt-14">
+        <CardCarousel />
+        </div>
     </div>
-    <div className="mt-14">
-    <CardCarousel />
-    </div>
-</div>
-);
+    );
 }
