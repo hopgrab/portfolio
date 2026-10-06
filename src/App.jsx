@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="relative min-h-full max-w-full bg-black">
-      <div className="min-h-screen w-full overflow-x-hidden bg-black">
+      <div className="min-h-screen w-full overflow-hidden bg-black">
         <div className="flex w-full gap-x-4 px-[5%] py-[5%]">
           <SidePanel />  
           <div className="flex min-w-0 flex-1 flex-col gap-y-3">
@@ -14,7 +14,7 @@ function App() {
             <Services />
           </div>
         </div>
-    </div>
+      </div>
       <Projects />
       <Contact />
     </div>
